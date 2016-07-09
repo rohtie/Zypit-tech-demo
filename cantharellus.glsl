@@ -64,18 +64,18 @@ void mainImage( out vec4 col, in vec2 p ) {
         // Background
         sqrt(p.y) *
         vec3(0.12, 0.77, 0.2) *
-        texture2D(iChannel1, sin(t)*0.031 + 1.0 - p * exp(p.y * 5.2)*0.25).rgb * 1.75 *
+        texture(iChannel1, sin(t)*0.031 + 1.0 - p * exp(p.y * 5.2)*0.25).rgb * 1.75 *
         shroomBody +
 
         (p * 1.55 - vec2(0.0, 0.55) + p.x*0.37).y * vec3(0.052, 0.12, 0.75) *
         shroomBody +
 
         // Textures
-        texture2D(iChannel0, hat).rgb
+        texture(iChannel0, hat).rgb
         * smoothstep(0.44, 0.2, hat_r)
         * shroomBody_m +
 
-        texture2D(iChannel0, p / stalkT).rgb
+        texture(iChannel0, p / stalkT).rgb
         * smoothstep(0.5, 0.0, stalk_r) * 1.5
         * shroomBody_m +
 

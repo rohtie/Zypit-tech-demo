@@ -5,7 +5,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
     vec2 q = p - vec2(0.422, 0.521);
 
     float r = smoothstep(
-        0.58 - cos(atan(q.x, q.y) + texture2D(iChannel0, vec2(0.0, 0.0)).x * 0.4) * 0.55,
+        0.58 - cos(atan(q.x, q.y) + texture(iChannel0, vec2(0.0, 0.0)).x * 0.4) * 0.55,
         0.0,
         length(q)
     );

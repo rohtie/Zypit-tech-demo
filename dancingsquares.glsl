@@ -16,7 +16,7 @@ void mainImage( out vec4 col, in vec2 p ) {
 
     center = repeat(p, center);
 
-    float angle = 3.14/4.0 + texture2D(iChannel0, vec2(0.9, 0.75)).x * 3.14;
+    float angle = 3.14/4.0 + texture(iChannel0, vec2(0.9, 0.75)).x * 3.14;
     center = rotate(center, angle);
 
     float square = abs(center.x) + abs(center.y);
@@ -35,7 +35,7 @@ void mainImage( out vec4 col, in vec2 p ) {
         // Square
         vec3(square) *
         vec3(0.42 / p.y*0.52, 0.15 / p.y*0.82 + p.x*0.22, 0.21) +
-        texture2D(iChannel1, center).rgb * 0.25 +
+        texture(iChannel1, center).rgb * 0.25 +
 
         // Eyes
         -vec3(eyes) +

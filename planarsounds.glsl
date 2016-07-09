@@ -4,9 +4,9 @@ float smin( float a, float b, float k ) {
 }
 
 vec3 triPlanar(sampler2D tex, vec3 normal, vec3 point) {
-    vec3 cX = texture2D(tex, point.yz).rgb;
-    vec3 cY = texture2D(tex, point.xz).rgb;
-    vec3 cZ = texture2D(tex, point.xy).rgb;
+    vec3 cX = texture(tex, point.yz).rgb;
+    vec3 cY = texture(tex, point.xz).rgb;
+    vec3 cZ = texture(tex, point.xy).rgb;
 
     vec3 blend = abs(normal);
     blend /= blend.x + blend.y + blend.z + 0.001;
@@ -48,7 +48,7 @@ float intersect (vec3 rayOrigin, vec3 rayDirection) {
         vec3 point = rayOrigin + rayDirection * distance;
         currentDistance = map(point) +
                           triPlanar(iChannel0, getNormal(point), point).r *
-                          (-0.1 + -abs(texture2D(iChannel1, point.xz * point.yx * point.zz).r));
+                          (-0.1 + -abs(texture(iChannel1, point.xz * point.yx * point.zz).r));
 
         distance += currentDistance;
     }

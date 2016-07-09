@@ -27,7 +27,7 @@ void mainImage( out vec4 o, in vec2 p ) {
 
     o.rgb = vec3(res) + (1.0 - circle(p)) * -abs(p.y) * 0.5 - circle(p) * 0.5 + circle(p) * (1.0 - length(p)) * 0.3;
 
-    p.y += sin(p.x * 0.21 + texture2D(iChannel0, vec2((p.x + 1.0) * 0.5, 0.0)).r * 0.1);
+    p.y += sin(p.x * 0.21 + texture(iChannel0, vec2((p.x + 1.0) * 0.5, 0.0)).r * 0.1);
 
     o.r /= p.y + 0.07 * 2.0;
     o.b += p.y * 0.4;

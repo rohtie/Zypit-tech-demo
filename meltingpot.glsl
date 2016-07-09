@@ -20,8 +20,8 @@ void mainImage( out vec4 col, in vec2 p ) {
     float g = max(abs(p - 0.6).x, abs(p - 0.6).y);
     #endif
 
-    r *= texture2D(iChannel0, vec2((p.x) * 0.5, 0.75)).r * 2.5;
-    g *= texture2D(iChannel0, vec2((p.x) * 0.5, 0.75)).r * 0.25;
+    r *= texture(iChannel0, vec2((p.x) * 0.5, 0.75)).r * 2.5;
+    g *= texture(iChannel0, vec2((p.x) * 0.5, 0.75)).r * 0.25;
 
     // Create pattern
     #if 1

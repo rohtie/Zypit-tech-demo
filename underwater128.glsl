@@ -4,9 +4,9 @@ float smin( float a, float b, float k ) {
 }
 
 vec3 triPlanar(sampler2D tex, vec3 normal, vec3 point) {
-    vec3 cX = texture2D(tex, point.yz).rgb;
-    vec3 cY = texture2D(tex, point.xz).rgb;
-    vec3 cZ = texture2D(tex, point.xy).rgb;
+    vec3 cX = texture(tex, point.yz).rgb;
+    vec3 cY = texture(tex, point.xz).rgb;
+    vec3 cZ = texture(tex, point.xy).rgb;
 
     vec3 blend = abs(normal);
     blend /= blend.x + blend.y + blend.z + 0.001;
@@ -53,7 +53,7 @@ vec2 map(vec3 point) {
     float material = 0.0;
 
     float result = point.y + noise(point.xz + iGlobalTime);
-    result *= point.y + texture2D(iChannel0, point.xz * 0.05 + iGlobalTime * 0.1).r;
+    result *= point.y + texture(iChannel0, point.xz * 0.05 + iGlobalTime * 0.1).r;
 
     return vec2(result, material);
 }

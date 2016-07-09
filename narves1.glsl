@@ -70,7 +70,7 @@ vec2 map (vec3 point) {
 
 
     float distance = composite +
-        texture2D(iChannel0, point.xx * point.yy * point.zz *
+        texture(iChannel0, point.xx * point.yy * point.zz *
                              mat2(-sin(t), cos(t),
                                   cos(t), sin(t))).r * (0.05) ;
 

@@ -6,10 +6,10 @@ vec2 map (vec3 point) {
     point.xz *= mat2(cos(t), -sin(t),
                      sin(t), cos(t));
 
-    float whirl0 = texture2D(iChannel1, point.xy * point.yz).r;
+    float whirl0 = texture(iChannel1, point.xy * point.yz).r;
 
 
-    float whirl1 = texture2D(iChannel1, point.xz * point.yx).r;
+    float whirl1 = texture(iChannel1, point.xz * point.yx).r;
 
 
     if (t > 10.0 && mod(t, 2.0) > -1.0 && mod(t, 2.0) < 1.0) {
@@ -26,7 +26,7 @@ vec2 map (vec3 point) {
 
     vec2 res = vec2(r + mix(whirl0, whirl1, mod(t, 200.0)), material);
 
-    res.x += texture2D(iChannel0, point.xz * point.yx).r;
+    res.x += texture(iChannel0, point.xz * point.yx).r;
 
 
     return res;

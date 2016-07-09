@@ -17,11 +17,11 @@ float map (vec3 point) {
            smoothstep(
                 0.0,
                 1.0,
-                texture2D(iChannel0, point.xx * point.yy * point.zz + 0.1).r
+                texture(iChannel0, point.xx * point.yy * point.zz + 0.1).r
             ) * 0.5;
 
     // Works best for "experiment" song
-    //return length(point) - clamp(0.0, 0.5, texture2D(iChannel0, point.xx * point.yy * point.zz + 0.1).r) * 1.25;
+    //return length(point) - clamp(0.0, 0.5, texture(iChannel0, point.xx * point.yy * point.zz + 0.1).r) * 1.25;
 }
 
 float intersect (vec3 rayOrigin, vec3 rayDirection) {
@@ -78,7 +78,6 @@ void mainImage (out vec4 color, in vec2 point) {
         vec3 normal = getNormal(point);
 
         col += vec3(0.05, 0.01, 0.35);
-        col /= texture2D(iChannel0, point.xx * point.yy * point.zz + 0.1).rgb;
         col += vec3(0.7, 1.0, 0.95) * max(dot(normal, light), 0.0);
 
         vec3 halfVector = normalize(light + normal);

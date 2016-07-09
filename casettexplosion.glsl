@@ -78,7 +78,7 @@ float map (vec3 point) {
 
     return mix(
         casette,
-        Box(point, texture2D(iChannel0, point.xx * point.yy * point.zz).rgb),
+        Box(point, texture(iChannel0, point.xx * point.yy * point.zz).rgb),
         -clamp(frame, 0.0, 1.0)
     );
 }
